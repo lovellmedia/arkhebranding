@@ -11,112 +11,93 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <h1>Tools & Resources for Home Services Branding</h1>
     
     <section>
-      <h2>Interactive Learning Tools</h2>
-      <p>The following tools apply Second Language Acquisition theory to practical language learning. Each tool is designed to help learners understand their acquisition process and make informed decisions about their learning strategies.</p>
+      <h2>Tool 1: Brand Health Scorecard</h2>
+      <p>Use this scorecard to assess the current state of your home services brand across all key dimensions.</p>
+      <div class="tool-box">
+        <h3>Visual Identity (0–25 points)</h3>
+        <ul>
+          <li><strong>Professional logo that works at all sizes (van to business card):</strong> +5 pts</li>
+          <li><strong>Consistent color scheme used across all materials:</strong> +5 pts</li>
+          <li><strong>Branded uniforms for all field technicians:</strong> +5 pts</li>
+          <li><strong>At least one wrapped vehicle in fleet:</strong> +5 pts</li>
+          <li><strong>Professional yard signs or job site signage:</strong> +5 pts</li>
+        </ul>
+        <h3>Digital Presence (0–25 points)</h3>
+        <ul>
+          <li><strong>Website loads in under 3 seconds on mobile:</strong> +5 pts</li>
+          <li><strong>Google Business Profile fully completed with photos:</strong> +5 pts</li>
+          <li><strong>50+ Google reviews averaging 4.5 stars or above:</strong> +5 pts</li>
+          <li><strong>Click-to-call button prominent on all pages:</strong> +5 pts</li>
+          <li><strong>Active social media with regular posts:</strong> +5 pts</li>
+        </ul>
+        <h3>Reputation & Trust (0–25 points)</h3>
+        <ul>
+          <li><strong>Systematic post-job review request process in place:</strong> +5 pts</li>
+          <li><strong>All reviews (positive and negative) receive responses:</strong> +5 pts</li>
+          <li><strong>BBB accreditation or equivalent trust certification:</strong> +5 pts</li>
+          <li><strong>Licensed & insured badges prominently displayed:</strong> +5 pts</li>
+          <li><strong>Background check badges for technicians:</strong> +5 pts</li>
+        </ul>
+        <h3>Customer Experience (0–25 points)</h3>
+        <ul>
+          <li><strong>Technicians introduce themselves and wear shoe covers:</strong> +5 pts</li>
+          <li><strong>Upfront, written pricing before work begins:</strong> +5 pts</li>
+          <li><strong>Follow-up call or text after job completion:</strong> +5 pts</li>
+          <li><strong>Maintenance plan or loyalty program offered:</strong> +5 pts</li>
+          <li><strong>Referral program with incentives:</strong> +5 pts</li>
+        </ul>
+        <p><strong>Score 85–100:</strong> Strong brand — focus on growth. <strong>60–84:</strong> Solid foundation — fill the gaps. <strong>Below 60:</strong> Urgent brand investment needed.</p>
+      </div>
     </section>
 
     <section>
-      <h2>Tool 1: Interlanguage Analyzer</h2>
-      <p>This tool helps learners understand their developing language system and the patterns in their errors.</p>
+      <h2>Tool 2: Marketing Channel ROI Estimator</h2>
+      <p>Evaluate which marketing channels deserve your budget based on average home services industry performance data.</p>
       <div class="tool-box">
-        <h3>How It Works</h3>
-        <p>Enter a sentence you've written or spoken in English. The analyzer identifies errors, explains the underlying SLA principle (overgeneralization, L1 transfer, incomplete learning), and suggests targeted instruction.</p>
         <div class="tool-input">
-          <label for="sentence">Enter your sentence:</label>
-          <textarea id="sentence" placeholder="e.g., 'He go to school every day'"></textarea>
-          <button onclick="analyzeSentence()">Analyze</button>
+          <label for="channel">Select a marketing channel:</label>
+          <select id="channel">
+            <option value="referral">Customer Referrals</option>
+            <option value="google-lsa">Google Local Services Ads</option>
+            <option value="google-ppc">Google PPC Ads</option>
+            <option value="seo">Local SEO / Organic Search</option>
+            <option value="direct-mail">Direct Mail</option>
+            <option value="social">Social Media Ads</option>
+            <option value="nextdoor">Nextdoor Ads</option>
+          </select>
+          <label for="monthlyBudget">Monthly budget ($):</label>
+          <input type="number" id="monthlyBudget" value="1000" min="100" max="50000">
+          <button onclick="calcROI()">Estimate ROI</button>
         </div>
-        <div id="analysisResult" class="tool-output" style="display:none;">
-          <h4>Analysis Results</h4>
-          <p id="errorExplanation"></p>
-          <p id="slaExplanation"></p>
-          <p id="suggestion"></p>
+        <div id="roiResult" class="tool-output" style="display:none;">
+          <h4>Estimated Performance</h4>
+          <p id="roiEstimate"></p>
+          <p id="roiNote"></p>
         </div>
       </div>
     </section>
 
     <section>
-      <h2>Tool 2: Learning Condition Matcher</h2>
-      <p>This tool helps you understand your learning context and receive personalized recommendations based on SLA research.</p>
-      <div class="tool-box">
-        <h3>How It Works</h3>
-        <p>Answer questions about your learning situation. The tool matches your context to SLA research findings and recommends optimal learning conditions and strategies.</p>
-        <div class="tool-input">
-          <label>Your age:</label>
-          <select id="age">
-            <option>Child (under 12)</option>
-            <option>Teenager (12-18)</option>
-            <option selected>Adult (18+)</option>
-          </select>
-          
-          <label>Time available per week:</label>
-          <select id="time">
-            <option>Less than 5 hours</option>
-            <option selected>5-10 hours</option>
-            <option>10-20 hours</option>
-            <option>20+ hours</option>
-          </select>
-          
-          <label>Learning context:</label>
-          <select id="context">
-            <option>Classroom only</option>
-            <option selected>Classroom + self-study</option>
-            <option>Self-study only</option>
-            <option>Immersion (living in target language country)</option>
-          </select>
-          
-          <button onclick="matchLearningCondition()">Get Recommendations</button>
-        </div>
-        <div id="matchResult" class="tool-output" style="display:none;">
-          <h4>Personalized Recommendations</h4>
-          <p id="matchExplanation"></p>
-          <ul id="recommendations"></ul>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Tool 3: Vocabulary Acquisition Calculator</h2>
-      <p>This tool estimates realistic vocabulary acquisition timelines based on SLA research.</p>
-      <div class="tool-box">
-        <h3>How It Works</h3>
-        <p>Enter your target vocabulary size and study time. The calculator uses research-based acquisition rates to estimate your timeline.</p>
-        <div class="tool-input">
-          <label for="targetVocab">Target vocabulary size (words):</label>
-          <input type="number" id="targetVocab" placeholder="e.g., 2000" value="2000">
-          
-          <label for="hoursPerWeek">Study hours per week:</label>
-          <input type="number" id="hoursPerWeek" placeholder="e.g., 10" value="10">
-          
-          <button onclick="calculateVocabTimeline()">Calculate Timeline</button>
-        </div>
-        <div id="vocabResult" class="tool-output" style="display:none;">
-          <h4>Estimated Timeline</h4>
-          <p id="timelineExplanation"></p>
-          <p id="timelineResult"></p>
-          <p id="timelineNote"></p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Additional Resources</h2>
+      <h2>Top Recommended Resources by Category</h2>
       <ul>
-        <li><strong>SLA Research Journals:</strong> Studies in Second Language Acquisition, TESOL Quarterly, Language Learning</li>
-        <li><strong>Foundational Textbooks:</strong> Ellis (2015), Gass & Mackey (2020), Lightbown & Spada (2013)</li>
-        <li><strong>Online Communities:</strong> TESOL International Association, Applied Linguistics Association</li>
-        <li><strong>Language Learning Platforms:</strong> Apps and websites that incorporate SLA principles (spaced repetition, comprehensible input, interaction)</li>
+        <li><strong>Reputation management:</strong> Podium, Birdeye, NiceJob — automated review request platforms</li>
+        <li><strong>Local SEO tracking:</strong> BrightLocal — rank tracking, citation audits, review monitoring</li>
+        <li><strong>Website for home services:</strong> Scorpion, Rival Digital, Hatch — specialists in home services web design and SEO</li>
+        <li><strong>Call tracking & analytics:</strong> CallRail — track which marketing sources drive calls and conversions</li>
+        <li><strong>CRM & dispatch:</strong> ServiceTitan, Jobber, Housecall Pro — purpose-built for home services operations</li>
+        <li><strong>Google Ads management:</strong> WorkIZ, Sightly — home services PPC specialists</li>
+        <li><strong>Direct mail:</strong> ValPak, MailShark, Taradel — targeted home services direct mail platforms</li>
       </ul>
     </section>
 
     <section>
       <h2>Exploring Further</h2>
-      <p>For more context on SLA principles:</p>
+      <p>For more context on home services branding:</p>
       <ul>
-        <li>Review the <a href="/second-language-acquisition-theory/">overview</a> of core concepts</li>
-        <li>Understand <a href="/second-language-acquisition-theory/technical-deep-dive/">cognitive mechanisms</a> behind these tools</li>
-        <li>Explore <a href="/second-language-acquisition-theory/ontology/">detailed terminology</a></li>
-        <li>Address <a href="/second-language-acquisition-theory/challenges/">common learning challenges</a></li>
+        <li>Review the <a href="/home-services-branding/">overview</a> of branding fundamentals</li>
+        <li>Understand the <a href="/home-services-branding/technical-deep-dive/">technical brand systems</a> behind these tools</li>
+        <li>Explore <a href="/home-services-branding/ontology/">detailed terminology</a> in our knowledge base</li>
+        <li>Address <a href="/home-services-branding/challenges/">common branding challenges</a></li>
       </ul>
     </section>
   </article>
